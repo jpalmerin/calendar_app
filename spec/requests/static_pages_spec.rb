@@ -25,4 +25,12 @@ describe "Static pages" do
     it { should have_selector('h1',    text: 'Contact') }
     it { should have_selector('title', text: full_title('Contact')) }
   end
+  
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) } # Code to make a user variable
+    before { visit user_path(user) }
+
+    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('title', text: user.name) }
+  end
 end
